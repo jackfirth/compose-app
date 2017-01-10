@@ -4,11 +4,11 @@ env:
   global:
     - RACKET_DIR=~/racket
   matrix:
-    - RACKET_VERSION=6.4 RUN_COVER=true
-    - RACKET_VERSION=6.5 RUN_COVER=true
-    - RACKET_VERSION=6.6 RUN_COVER=true
-    - RACKET_VERSION=6.7 RUN_COVER=true
-    - RACKET_VERSION=HEAD RUN_COVER=true
+    - RACKET_VERSION=6.4
+    - RACKET_VERSION=6.5
+    - RACKET_VERSION=6.6
+    - RACKET_VERSION=6.7
+    - RACKET_VERSION=HEAD
 
 before_install:
   - git clone https://github.com/greghendershott/travis-racket.git ../travis-racket
@@ -21,4 +21,4 @@ install:
 
 script:
   - raco test -c compose-app
-  - if [ -n "$RUN_COVER" ]; then raco cover -f codecov -d $TRAVIS_BUILD_DIR/coverage -c compose-app compose-app/fancy-app; fi
+  - raco cover -f codecov -d $TRAVIS_BUILD_DIR/coverage -c compose-app compose-app/fancy-app
