@@ -3,9 +3,11 @@
 (module+ test
   
   (module base racket/base
-    (require racket/list
+    (require racket/function
+             racket/list
              racket/string
              rackunit
+             syntax/macro-testing
              "main.rkt")
     (define ((mapped f) vs) (map f vs))
     (check-equal? ((- .. length .. rest) '(a b c)) -2)
@@ -18,7 +20,9 @@
     (define ((mapped/kw #:proc f) vs) (map f vs))
     (check-equal? ((first .. mapped/kw #:proc string->symbol .. string-split)
                    "foo bar baz")
-                  'foo))
+                  'foo)
+    (check-exn #rx"outside compose-app"
+               (thunk (convert-compile-time-error ..))))
 
   (module fancy racket/base
     (require racket/list
