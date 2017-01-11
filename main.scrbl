@@ -39,7 +39,7 @@ extensible through syntax parameters, allowing alternative base forms of
 the @racket[fancy-app] module, to make composition of anonymous functions as
 painless as possible.
 
-@source-code-link{https://github.com/jackfirth/syntax-warn}
+@source-code-link{https://github.com/jackfirth/compose-app}
 
 @section{API Reference}
 @defmodule[compose-app]
