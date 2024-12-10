@@ -10,7 +10,7 @@
          (rename-in fancy-app [#%app fancy-app])
          (except-in "main.rkt" #%app))
 
-(define-simple-macro (compose-app/fancy-app any ...)
+(define-syntax-parse-rule (compose-app/fancy-app any ...)
   (syntax-parameterize
       ([compose-app-base-app (make-rename-transformer #'fancy-app)])
     (compose-app any ...)))
