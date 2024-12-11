@@ -5,10 +5,10 @@
          (all-from-out "main.rkt"))
 
 (require (for-syntax racket/base)
-         (rename-in fancy-app [#%app fancy-app])
-         (except-in "main.rkt" #%app)
          racket/stxparam
-         syntax/parse/define)
+         syntax/parse/define
+         (rename-in fancy-app [#%app fancy-app])
+         (except-in "main.rkt" #%app))
 
 (define-simple-macro (compose-app/fancy-app any ...)
   (syntax-parameterize
